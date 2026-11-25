@@ -514,26 +514,28 @@ h1,h2,h3,h4{font-family:var(--font-display);font-weight:600;letter-spacing:-0.01
 .ach-card p{color:var(--text-dim);font-size:13.5px;}
 
 /* ============ CERTIFICATES ============ */
-.cert-carousel{position:relative;margin-top:50px;}
-.cert-track{display:flex;gap:22px;overflow-x:auto;scroll-snap-type:x mandatory;padding-bottom:16px;scrollbar-width:none;-webkit-overflow-scrolling:touch;}
-.cert-track::-webkit-scrollbar{display:none;}
-.cert-card{
-  min-width:300px;scroll-snap-align:start;border-radius:20px;padding:24px;
-  display:flex;flex-direction:column;justify-content:space-between;aspect-ratio:4/3;
-  transition:transform .4s var(--ease),border-color .4s;
+.cert-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:20px;margin-top:30px;}
+.cert-card{border-radius:18px;padding:14px;display:flex;flex-direction:column;gap:12px;min-width:0;transition:transform .3s var(--ease),border-color .3s;}
+.cert-card:hover{transform:translateY(-5px);border-color:var(--violet-soft);}
+.cert-image{width:100%;aspect-ratio:1.43;border-radius:11px;background-image:url('assets/certificates-sprite.jpg');background-size:400% 200%;background-repeat:no-repeat;background-color:#f5f5f8;}
+.cert-image-1{background-position:0% 0%;}
+.cert-image-2{background-position:33.333% 0%;}
+.cert-image-3{background-position:66.666% 0%;}
+.cert-image-4{background-position:100% 0%;}
+.cert-image-5{background-position:0% 100%;}
+.cert-image-6{background-position:33.333% 100%;}
+.cert-image-7{background-position:66.666% 100%;}
+.cert-card h4{font-size:15px;line-height:1.35;}
+.cert-card span{color:var(--text-dim);font-size:11.5px;font-family:var(--font-mono);}
+@media(max-width:900px){.cert-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:14px;margin-top:24px;}}
+@media(max-width:640px){
+  section{padding:58px 0;}
+  .section-title{margin-bottom:12px;}
+  .cert-grid{gap:10px;margin-top:20px;}
+  .cert-card{padding:9px;gap:8px;border-radius:14px;}
+  .cert-card h4{font-size:13px;}
+  .cert-card span{font-size:10px;}
 }
-.cert-card:hover{transform:translateY(-8px) rotate(-1deg);border-color:var(--violet-soft);}
-.cert-badge{transition:transform .4s var(--ease);}
-.cert-card:hover .cert-badge{transform:scale(1.15) rotate(-8deg);}
-.cert-badge{width:40px;height:40px;border-radius:10px;background:var(--glass-strong);display:flex;align-items:center;justify-content:center;color:var(--teal);font-family:var(--font-mono);margin-bottom:auto;}
-.cert-card h4{font-size:16px;margin-top:16px;}
-.cert-card span{color:var(--text-dim);font-size:12.5px;font-family:var(--font-mono);}
-.cert-nav{display:flex;gap:10px;justify-content:flex-end;margin-top:18px;}
-.cert-nav button{
-  width:40px;height:40px;border-radius:50%;border:1px solid var(--glass-border);
-  display:flex;align-items:center;justify-content:center;font-size:16px;transition:border-color .25s,background .25s;
-}
-.cert-nav button:hover{border-color:var(--teal);background:var(--glass-strong);}
 
 /* ============ CONTACT ============ */
 .contact-grid{display:grid;grid-template-columns:0.85fr 1.15fr;gap:60px;align-items:start;margin-top:50px;}
@@ -841,18 +843,14 @@ a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visib
   <div class="container">
     <p class="eyebrow reveal">Certificates</p>
     <h2 class="section-title reveal">Proof of the process.</h2>
-    <div class="cert-carousel reveal">
-      <div class="cert-track" id="certTrack">
-        <div class="glass-card cert-card glow-border"><div class="cert-badge">01</div><h4>Full Stack Web Development</h4><span>Skiez Technologies</span></div>
-        <div class="glass-card cert-card glow-border"><div class="cert-badge">02</div><h4>Python Programming</h4><span>Completion Certificate</span></div>
-        <div class="glass-card cert-card glow-border"><div class="cert-badge">03</div><h4>IIC Hackathon</h4><span>Top 15 Team Recognition</span></div>
-        <div class="glass-card cert-card glow-border"><div class="cert-badge">04</div><h4>UI/UX Design Basics</h4><span>Completion Certificate</span></div>
-        <div class="glass-card cert-card glow-border"><div class="cert-badge">05</div><h4>Technical Symposium</h4><span>Participation Certificate</span></div>
-      </div>
-      <div class="cert-nav">
-        <button id="certPrev" aria-label="Previous certificate">←</button>
-        <button id="certNext" aria-label="Next certificate">→</button>
-      </div>
+    <div class="cert-grid reveal">
+      <article class="glass-card cert-card glow-border"><div class="cert-image cert-image-1" role="img" aria-label="NPTEL Python for Data Science certificate"></div><h4>Python for Data Science</h4><span>NPTEL · IIT Madras</span></article>
+      <article class="glass-card cert-card glow-border"><div class="cert-image cert-image-2" role="img" aria-label="ACM Technova winning certificate"></div><h4>ACM Technova — Winner</h4><span>Adhiparasakthi Engineering College</span></article>
+      <article class="glass-card cert-card glow-border"><div class="cert-image cert-image-3" role="img" aria-label="Python certificate of accomplishment"></div><h4>Python Basics</h4><span>Certificate of Accomplishment</span></article>
+      <article class="glass-card cert-card glow-border"><div class="cert-image cert-image-4" role="img" aria-label="SQL Basics certificate of accomplishment"></div><h4>SQL Basics</h4><span>Certificate of Accomplishment</span></article>
+      <article class="glass-card cert-card glow-border"><div class="cert-image cert-image-5" role="img" aria-label="Solar Explorers certificate of appreciation"></div><h4>Solar Explorers — Appreciation</h4><span>Peri Engineering College</span></article>
+      <article class="glass-card cert-card glow-border"><div class="cert-image cert-image-6" role="img" aria-label="Intel Info symposium certificate of achievement"></div><h4>Intel Info — Achievement</h4><span>Mailam Engineering College</span></article>
+      <article class="glass-card cert-card glow-border"><div class="cert-image cert-image-7" role="img" aria-label="IIC Hackathon certificate of participation"></div><h4>IIC Hackathon 2026</h4><span>Adhiparasakthi Engineering College</span></article>
     </div>
   </div>
 </section>
@@ -1011,7 +1009,7 @@ gsap.utils.toArray('.reveal').forEach((el,i)=>{
 });
 
 /* ---------- Grid stagger for cards (skills, achievements, certs, projects) ---------- */
-['.skills-grid','.ach-grid','.projects-grid'].forEach(sel=>{
+['.skills-grid','.ach-grid','.projects-grid','.cert-grid'].forEach(sel=>{
   const grid = document.querySelector(sel);
   if(!grid) return;
   gsap.from(grid.children, {
@@ -1125,10 +1123,7 @@ document.querySelectorAll('.magnetic').forEach(btn=>{
   btn.addEventListener('mouseleave', ()=>{ gsap.to(btn, {x:0, y:0, duration:0.4, ease:'elastic.out(1,0.4)'}); });
 });
 
-/* ---------- Certificate carousel ---------- */
-const certTrack = document.getElementById('certTrack');
-document.getElementById('certNext').addEventListener('click', ()=>certTrack.scrollBy({left:320, behavior:'smooth'}));
-document.getElementById('certPrev').addEventListener('click', ()=>certTrack.scrollBy({left:-320, behavior:'smooth'}));
+/* ---------- Certificate gallery ---------- */
 
 /* ---------- Contact form: sends to Web3Forms, which emails you ---------- */
 document.getElementById('contactForm').addEventListener('submit', function(e){
